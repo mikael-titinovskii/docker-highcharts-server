@@ -1,0 +1,7 @@
+phantomjs:
+  image: wernight/phantomjs
+  command: phantomjs /app/phantomjs/highcharts-convert.js -host 0.0.0.0 -port 3003
+  volumes: 
+    - "./highcharts-export-server:/app"
+  ports: 
+    - "3003:3003"
