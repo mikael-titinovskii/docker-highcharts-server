@@ -44,11 +44,13 @@ Setting up
 ================================
 
 ```
-ubuntu@vm-mtitin:~$ docker-compose up -d
+$ docker-compose up -d
 ```
 
 To consider
 ================================
-Don't forget about time zones
+1) Don't forget about time zones
 
 http://api.highcharts.com/highcharts/global.timezoneOffset
+
+2) I did't made a security audit of this thing, use over a firewall
