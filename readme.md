@@ -57,3 +57,4 @@ Todo
 ================================
 - logging 
 - containerpilot or s6
+- perf test
