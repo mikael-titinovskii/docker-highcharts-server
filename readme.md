@@ -1,34 +1,38 @@
-SVC Highcharts
+Docker Highcharts server
 ================================
-Сервис с помощью которого можно 
 
-генерировать изображение графика Highcharts 
+A instance that can generate Highchart graphs by request
 
-по ее конфигурации, используя ~~черную магию~~ phantomjs
+using ~~ancient sorcery~~ phantomjs
  
-
-Флоу 
+WHY
 ================================
-Поднимается сервер который слушает только POST запросы, 
 
+If your frontend is using highcharts graphs and you need that exact same graph
 
-отправляете конфиг графика, он возвращает base64_encode(png)
+delivered in your email, look no further
 
+saves a lot of time
 
-При фэйле генерации графика, сервачек не упадет а просто напечатает в консоле ошибку
-
-
-Как получить конфиг графика с фронтенда
+FLOW
 ================================
-открываете девелоперскую консоль в хроме или фф
+Server only accepts post requests
+
+You send the highcharts config, it ouputs base64_encode(png)
+
+On error the server will not die, you can docker exec to view the error
+
+How to get the graph
+================================
+open the dev console in chrome or ff
 ```
 > JSON.stringify(Highcharts.charts[0].options)
 ```
 
-и конфиг готов для отправки
+thats the JSON you need to send
 
 
-Доки
+Read more
 ================================
 http://www.highcharts.com/docs/export-module/setting-up-the-server
 
@@ -36,20 +40,15 @@ http://www.highcharts.com/docs/export-module/setting-up-the-server
 http://phantomjs.org/documentation/
 
 
-Как поднять
+Setting up
 ================================
 
 ```
-ubuntu@vm-mtitin:~$ docker-compose build
 ubuntu@vm-mtitin:~$ docker-compose up -d
 ```
 
-Beware
+To consider
 ================================
-Есть проблема с таймзоной, которую я не осилил решить,
+Don't forget about time zones
 
-тут можно выставить в самом конфиге оффсет 
-
-http://api.highcharts.com/highcharts/global.timezoneOffset,
-
- либо в конфиге самого контейнера
+http://api.highcharts.com/highcharts/global.timezoneOffset
